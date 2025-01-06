@@ -2,9 +2,9 @@ import whois
 import requests
 import os
 
-# 从环境变量中读取 Telegram 配置
 TELEGRAM_BOT_TOKEN = os.getenv("TELEGRAM_BOT_TOKEN")
 TELEGRAM_CHAT_ID = os.getenv("TELEGRAM_CHAT_ID")
+DOMAIN_NAME = os.getenv("DOMAIN_NAME")
 
 def send_telegram_message(message):
     """通过 Telegram Bot 发送消息"""
@@ -39,5 +39,11 @@ def check_domain_availability(domain):
         send_telegram_message(error_message)
 
 if __name__ == "__main__":
-    domain = "liuy.xyz"
-    check_domain_availability(domain)
+    domain_names = os.getenv("DOMAIN_NAMES", "").split(",")
+    if not domain_names:
+        print("未设置域名环境变量 DOMAIN_NAMES")
+    else:
+        for domain in domain_names:
+            domain = domain.strip()
+            if domain:
+                check_domain_availability(domain)
