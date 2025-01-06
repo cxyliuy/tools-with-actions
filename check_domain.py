@@ -6,11 +6,6 @@ TELEGRAM_BOT_TOKEN = os.getenv("TELEGRAM_BOT_TOKEN")
 TELEGRAM_CHAT_ID = os.getenv("TELEGRAM_CHAT_ID")
 DOMAIN_NAMES = os.getenv("DOMAIN_NAMES")
 
-# 调试信息
-print(f"TELEGRAM_BOT_TOKEN: {TELEGRAM_BOT_TOKEN}")
-print(f"TELEGRAM_CHAT_ID: {TELEGRAM_CHAT_ID}")
-print(f"DOMAIN_NAMES: {DOMAIN_NAMES}")
-
 def send_telegram_message(message):
     """通过 Telegram Bot 发送消息"""
     url = f"https://api.telegram.org/bot{TELEGRAM_BOT_TOKEN}/sendMessage"
