@@ -4,7 +4,7 @@ import os
 
 TELEGRAM_BOT_TOKEN = os.getenv("TELEGRAM_BOT_TOKEN")
 TELEGRAM_CHAT_ID = os.getenv("TELEGRAM_CHAT_ID")
-DOMAIN_NAME = os.getenv("DOMAIN_NAME")
+DOMAIN_NAMES = os.getenv("DOMAIN_NAMES")
 
 # 调试信息
 print(f"TELEGRAM_BOT_TOKEN: {TELEGRAM_BOT_TOKEN}")
@@ -44,7 +44,7 @@ def check_domain_availability(domain):
         send_telegram_message(error_message)
 
 if __name__ == "__main__":
-    domain_names = os.getenv("DOMAIN_NAMES", "").split(",")
+    domain_names = DOMAIN_NAMES.split(",")
     if not domain_names:
         print("未设置域名环境变量 DOMAIN_NAMES")
     else:
